@@ -71,6 +71,7 @@ void ArrayIndexer::logReport() const
 			{
 				case Object::ObjectType::BASE:					typeName = "Base"; break;
 				case Object::ObjectType::TEXTURE:				typeName = "Texture"; break;
+				case Object::ObjectType::SHADER:				typeName = "Shader"; break;
 				case Object::ObjectType::SCENENODE:				typeName = "SceneNode"; break;
 				case Object::ObjectType::SPRITE:				typeName = "Sprite"; break;
 				case Object::ObjectType::MESH_SPRITE:			typeName = "MeshSprite"; break;

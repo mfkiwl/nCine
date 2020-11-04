@@ -95,6 +95,9 @@ void BaseSprite::updateRenderCommand()
 	renderCommand_->transformation() = worldMatrix_;
 	renderCommand_->material().setTexture(*texture_);
 
+	if (renderCommand_->material().shaderProgramType() == Material::ShaderProgramType::CUSTOM)
+		return;
+
 	spriteBlock_->uniform("color")->setFloatVector(Colorf(absColor()).data());
 
 	const Vector2i texSize = texture_->size();
