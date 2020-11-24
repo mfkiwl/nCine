@@ -63,6 +63,26 @@ Color::Color(const Colorf &color)
 // PUBLIC FUNCTIONS
 ///////////////////////////////////////////////////////////
 
+unsigned int Color::rgba() const
+{
+	return (channels_[0] << 24) + (channels_[1] << 16) + (channels_[2] << 8) + channels_[3];
+}
+
+unsigned int Color::argb() const
+{
+	return (channels_[3] << 24) + (channels_[0] << 16) + (channels_[1] << 8) + channels_[2];
+}
+
+unsigned int Color::abgr() const
+{
+	return (channels_[3] << 24) + (channels_[2] << 16) + (channels_[1] << 8) + channels_[0];
+}
+
+unsigned int Color::bgra() const
+{
+	return (channels_[2] << 24) + (channels_[1] << 16) + (channels_[0] << 8) + channels_[3];
+}
+
 void Color::set(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha)
 {
 	channels_[0] = static_cast<unsigned char>(red);
@@ -80,6 +100,7 @@ void Color::set(unsigned int red, unsigned int green, unsigned int blue)
 
 void Color::set(unsigned int hex)
 {
+	channels_[3] = static_cast<unsigned char>((hex & 0xFF000000) >> 24);
 	channels_[0] = static_cast<unsigned char>((hex & 0xFF0000) >> 16);
 	channels_[1] = static_cast<unsigned char>((hex & 0xFF00) >> 8);
 	channels_[2] = static_cast<unsigned char>(hex & 0xFF);
